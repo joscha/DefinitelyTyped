@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { storiesOf, setAddon, addDecorator, configure, getStorybook, RenderFunction, Story } from '@storybook/react';
+import { storiesOf, setAddon, addDecorator, configure, getStorybook, RenderFunction, Story, StoryBucket, StoryObject } from '@storybook/react';
 
 const Decorator = (story: RenderFunction) => <div>{story()}</div>;
 
@@ -25,4 +25,4 @@ storiesOf<AnyAddon>('withAnyAddon', module).xyz();
 configure(() => undefined, module);
 
 // getStorybook
-getStorybook().forEach(({ kind, stories }) => stories.forEach(({ name, render }) => render()));
+getStorybook().forEach(({ kind, stories }: StoryBucket) => stories.forEach(({ name, render }: StoryObject) => render()));
